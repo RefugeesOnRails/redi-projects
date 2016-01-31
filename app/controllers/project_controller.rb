@@ -12,7 +12,6 @@ class ProjectController < ApplicationController
   end
 
   def show
-
     @projects = Project.all
     respond_to do |format|
       format.json {render json: @project.render_with_likes.to_json}
@@ -70,10 +69,8 @@ private
     render nothing: true, status: 406
   end
 
-  def respond_success
-    response = {
-      success: true,
-    }
+  def respond_success response = {}
+    response.merge!({success: true})
     render json: response.to_json
   end
 
@@ -87,7 +84,7 @@ private
 
   def attempt_save project
     if project.save
-      respond_success
+      respond_success({id: project.id})
     else
       respond_failure project.errors.to_json, :unprocessable_entity
     end
