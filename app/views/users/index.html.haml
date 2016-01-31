@@ -1,0 +1,8 @@
+%h1 Users
+
+- if flash[:notice]
+  %div{style: "background-color: green; color: white"}= flash[:notice]
+
+%ul
+  - @users.each do |user|
+    %li= user.name

@@ -1,0 +1,10 @@
+%h1 Projects!
+
+- @projects.each do |project|
+  %div
+    %h3= project.name
+    %p= "by #{project.user.name}"
+    %p= project.description
+    %p
+      = "#{pluralize(project.votes.count, "vote")}:"
+      = project.voters.map(&:name).join(", ")
