@@ -1,13 +1,16 @@
 %h1 Suggested projects
 
-- @projects.each do |project|
-  .row
-    .col-md-12
-      %h3
-        = project.name
-        %small= " by #{project.user.name}"
-    .col-md-12= project.description
-    .col-md-12
-      = pluralize(project.votes.count, "vote")
-      - if project.votes.count > 0
-        = ": #{project.voters.map(&:name).join(", ")}"
+- if @projects.size == 0
+  %p No projects yet
+- else
+  - @projects.each do |project|
+    .row
+      .col-md-12
+        %h3
+          = project.name
+          %small= " by #{project.user.name}"
+      .col-md-12= project.description
+      .col-md-12
+        = pluralize(project.votes.count, "vote")
+        - if project.votes.count > 0
+          = ": #{project.voters.map(&:name).join(", ")}"
