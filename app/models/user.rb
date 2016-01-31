@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_many :projects
   has_many :votes
 
-  before_create :add_auth_token
+  before_validation :ensure_has_auth_token
 
   validates_uniqueness_of :name, :auth
 
@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
     User.find_by_auth(auth_token)
   end
 
-  def add_auth_token
+  def ensure_has_auth_token
+    return if self.auth
     self.auth = random_new_auth_token
   end
 

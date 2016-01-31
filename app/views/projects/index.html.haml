@@ -1,10 +1,13 @@
-%h1 Projects!
+%h1 Suggested projects
 
 - @projects.each do |project|
-  %div
-    %h3= project.name
-    %p= "by #{project.user.name}"
-    %p= project.description
-    %p
-      = "#{pluralize(project.votes.count, "vote")}:"
-      = project.voters.map(&:name).join(", ")
+  .row
+    .col-md-12
+      %h3
+        = project.name
+        %small= " by #{project.user.name}"
+    .col-md-12= project.description
+    .col-md-12
+      = pluralize(project.votes.count, "vote")
+      - if project.votes.count > 0
+        = ": #{project.voters.map(&:name).join(", ")}"
