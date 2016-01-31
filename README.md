@@ -14,7 +14,7 @@ can:
 1. Manage their own project submissions
 2. Vote on all the available projects
 
-The main redi-projects app is hosted on heroku at: (https://redi-projects.herokuapp.com)[https://redi-projects.herokuapp.com].
+The main redi-projects app is hosted on heroku at: [https://redi-projects.herokuapp.com](https://redi-projects.herokuapp.com).
 
 A `redi` [gem](https://github.com/RefugeesOnRails/redi-gem) exists to make it easier
 to interact with the API of the redi-projects site.
