@@ -9,8 +9,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.auth = random_auth_token
-    puts "AUTH: #{@user.auth}"
     if @user.save
       redirect_to :users, notice: "Auth token: #{@user.auth}"
     else
@@ -19,10 +17,6 @@ class UsersController < ApplicationController
   end
 
 private
-  def random_auth_token
-    (0...50).map { ('a'..'z').to_a[rand(26)] }.join
-  end
-
   def user_params
     params.require(:user).permit(:name)
   end
