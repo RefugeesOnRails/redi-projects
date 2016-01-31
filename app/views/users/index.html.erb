@@ -1,0 +1,13 @@
+<h1>Users</h1>
+
+<%- if flash[:notice] %>
+<div style="background-color: green; color: white">
+  <%= flash[:notice] %>
+</div>
+<%- end %>
+
+<ul>
+  <%- @users.each do |user| %>
+    <li><%= user.name %></li>
+  <%- end %>
+</ul>
