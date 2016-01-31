@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :projects
-  has_many :votes
+  has_many :projects, dependent: :destroy
+  has_many :votes, dependent: :destroy
 
   before_validation :ensure_has_auth_token
 
