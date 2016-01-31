@@ -1,7 +1,7 @@
 require 'json'
 
 class ProjectController < ApplicationController
-  before_action :ensure_json_request
+  before_action :ensure_json_request, except: :show
   before_action :authenticate_user, except: :show
   before_action :load_project, only: [:show, :update, :destroy, :vote, :unvote]
   skip_before_action :verify_authenticity_token
@@ -12,7 +12,12 @@ class ProjectController < ApplicationController
   end
 
   def show
-    render json: @project.render_with_likes.to_json
+
+    @projects = Project.all
+    respond_to do |format|
+      format.json {render json: @project.render_with_likes.to_json}
+      format.html # shows in web
+    end
   end
 
   def update

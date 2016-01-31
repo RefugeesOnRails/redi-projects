@@ -5,6 +5,7 @@
     <h3><%= project.name %></h3>
     <p>by <%= project.user.name %></p>
     <p><%= project.description %></p>
-    <p><%= pluralize(project.votes.count, "vote") %>: <%= project.voters.join(", ") %></p>
+    <p><%= pluralize(project.votes.count, "vote") %>:
+      <%= project.voters.map(&:name).join(", ") %></p>
   </div>
 <%- end %>
